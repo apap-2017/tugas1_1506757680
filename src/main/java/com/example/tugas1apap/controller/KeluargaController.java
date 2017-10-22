@@ -44,12 +44,8 @@ public class KeluargaController {
 	    public String addKeluarga (Model model)
 	    {
 		 List<KelurahanModel> listKelurahan = keluargaDAO.getAllKelurahan();
-		 List<KecamatanModel> listKecamatan = keluargaDAO.getAllKecamatan();
-		 List<KotaModel> listKota = keluargaDAO.getAllKota();
 		 
 		 model.addAttribute("listKelurahan", listKelurahan);
-		 model.addAttribute("listKecamatan", listKecamatan);
-		 model.addAttribute("listKota", listKota);
 		 model.addAttribute("keluarga", new KeluargaModel());
 	        return "addKeluarga";
 	    }
@@ -81,7 +77,10 @@ public class KeluargaController {
 	    	KeluargaModel keluarga = keluargaDAO.selectKeluarga (nkk);
 	    		if(keluarga != null) {
 	    			log.info(nkk + " update nkk");
-	    			
+
+	    			 List<KelurahanModel> listKelurahan = keluargaDAO.getAllKelurahan();
+	    			 
+	    			model.addAttribute("listKelurahan", listKelurahan);
 	    			model.addAttribute("nomor_kk", nkk);
 	    			model.addAttribute("keluarga", keluarga);
 

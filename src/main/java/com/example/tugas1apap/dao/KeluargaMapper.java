@@ -39,7 +39,7 @@ public interface KeluargaMapper
     List <PendudukModel> selectFamilyMember (@Param("id_keluarga") String id_keluarga);
 	
 	@Update("UPDATE keluarga SET alamat = #{alamat}, rt = #{rt}, rw = #{rw}, id_kelurahan = #{id_kelurahan}  WHERE nomor_kk = #{nomor_kk} ") 
-    void updateKeluarga (@Param("keluarga") KeluargaModel keluarga);
+    void updateKeluarga (KeluargaModel keluarga);
 	
 	@Select("select * from kelurahan")
 	List<KelurahanModel> getAllKelurahan();

@@ -32,7 +32,9 @@
 		</div>
 		<div class="from-group">
 			<label>Kelurahan/Desa</label>
-			<input type="text" name="kelurahan" class="form-control" th:value="${keluarga.kelurahan}" th:field="*{kelurahan}" required="required"/>
+			<select th:name="id_kelurahan" class="form-control">
+				<option th:each="kelurahan, iterationStatus: ${listKelurahan}" th:value="${kelurahan.id}" th:text="${kelurahan.nama_kelurahan}"></option>
+			</select>
 		</div>
 		<div class="from-group">
 			<label>Kecamatan</label>
