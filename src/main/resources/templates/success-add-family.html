@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title>Success</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		<h2>Sukses!</h2>
+		<p th:text=" 'Keluarga dengan NKK '+${keluarga.nomor_kk} +' berhasil ditambahkan'"></p>
+		<br/>
+	</body>
+</html>

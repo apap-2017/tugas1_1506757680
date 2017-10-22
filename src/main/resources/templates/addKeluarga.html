@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Tambah Keluarga</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<h1 class="page-header">Tambah Keluarga</h1>
+	<br/>
+	<div class="col-sm-6 col-md-6 col-lg-6 pull-right">
+		<form action="/keluarga/tambah/submit" method="post" th:object="${keluarga}">
+		<div class="from-group">
+			<label>Alamat</label>
+			<input type="text" name="alamat" class="form-control" th:field="*{alamat}" required="required"/>
+		</div>
+		<div class="from-group">
+			<label>RT</label>
+			<input type="text" name="rt" class="form-control" required="required"/>
+		</div>
+		<div class="from-group">
+			<label>RW</label>
+			<input type="text" name="rw" class="form-control" required="required"/>
+		</div>
+		<div class="from-group">
+			<label>Kelurahan/Desa</label>
+			<select th:name="id_kelurahan" class="form-control">
+				<option th:each="kelurahan, iterationStatus: ${listKelurahan}" th:value="${kelurahan.id}" th:text="${kelurahan.nama_kelurahan}"></option>
+			</select>
+		</div>
+		<div class="from-group">
+			<label>Kecamatan</label>
+			<select th:name="kecamatan" class="form-control">
+				<option th:each="kecamatan, iterationStatus: ${listKecamatan}" th:value="${kecamatan.id}" th:text="${kecamatan.nama_kecamatan}"></option>
+			</select>
+		</div>
+		<div class="from-group">
+			<label>Kota</label>
+			<select th:name="kota" class="form-control">
+				<option th:each="kota, iterationStatus: ${listKota}" th:value="${kota.id}" th:text="${kota.nama_kota}"></option>
+			</select>
+		</div>
+		<br/>
+		<div class="from-group">
+			<button type="submit" class="btn btn-primary">Simpan</button>
+		</div>
+	</form>
+		
+	</div>
+</body>
+
+</html>
+

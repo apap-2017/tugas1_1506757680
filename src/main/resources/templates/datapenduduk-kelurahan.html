@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	 <link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css"
+ 		href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+        <script type="text/javascript">
+        	$(document).ready(function(){
+        		$('#tabel_penduduk').DataTable();
+        	});
+        </script>
+
+    <head>
+        <title>Data Kependudukan Online</title>
+    </head>
+    <body>
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<h1 th:text="'Lihat Data Penduduk Berdasarkan Kelurahan di ' + ${kelurahan.nama_kelurahan} + ', ' + ${kecamatan.nama_kecamatan} + ', ' + ${kota.nama_kota}">Title</h1>
+    	<br/>
+    	<hr/>
+    	
+    	<table id="tabel_penduduk">
+    		<thead>
+    			<tr>
+    				<th>NIK</th>
+    				<th>Nama</th>
+    				<th>Tempat, Tanggal Lahir</th>
+    				<th>Jenis Kelamin</th>
+    				<th>Golongan Darah</th>
+    				<th>Agama</th>
+    				<th>Status Perkawinan</th>
+    				<th>Pekerjaan</th>
+    				<th>Kewarganegaraan</th>
+    				<th>Status Kematian</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr data-th-each="penduduk : ${pendudukKelurahan}" th:object= "${penduduk}">
+    				<td data-th-text="*{nik}"></td>
+    				<td data-th-text="*{nama}"></td>
+    				<td data-th-text="*{tempat_lahir} + ', ' + *{tanggal_lahir}"></td>
+    				<td data-th-if="*{jenis_kelamin == 0}" data-th-text="Laki-laki"></td>
+    				<td data-th-if="*{jenis_kelamin == 1}" data-th-text="Perempuan"></td>
+    				<td data-th-text="*{golongan_darah}"></td>
+    				<td data-th-text="*{agama}"></td>
+    				<td data-th-text="*{status_perkawinan}"></td>
+    				<td data-th-text="*{pekerjaan}"></td>
+    				<td data-th-if="*{is_wni == 0}" data-th-text="WNA"></td>
+    				<td data-th-if="*{is_wni == 1}" data-th-text="WNI"></td>
+    				<td data-th-if="*{is_wafat == 0}" data-th-text="Hidup"></td>
+    				<td data-th-if="*{is_wafat == 1}" data-th-text="Wafat"></td>
+    			</tr>
+    		</tbody>
+    	</table>
+    		
+    </body>
+</html>

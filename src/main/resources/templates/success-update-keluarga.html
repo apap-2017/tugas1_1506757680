@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Update</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		<h2>Sukses!</h2>
+		<p th:text=" 'Keluarga dengan NKK '+${keluarga.nomor_kk} +' berhasil diubah'"></p>
+		
+		<br/>
+		<form action="/keluarga" method="get">
+       		 <input type="hidden" name="nkk" th:value="${keluarga.nomor_kk}" />
+ 		 	<button type="submit" class="btn btn-primary">Kembali ke Data Penduduk</button>
+		</form>
+	</body>
+</html>

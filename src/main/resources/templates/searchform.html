@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Cari Data</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<h1 class="page-header">Lihat Data Kependudukan Berdasarkan NIK</h1>
+
+	<form action="/penduduk" method="get">
+		<div>
+			<label for="nik">Masukkan Nomor Induk Kependudukan</label> <input type="text" name="nik" required="required"/>
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-primary">Lihat</button>
+		</div>
+	</form>
+	<hr></hr>
+	
+		<h1>Lihat Data Kependudukan Berdasarkan NKK</h1>
+
+	<form action="/keluarga" method="get">
+		<div>
+			<label for="nomor_kk">Masukkan Nomor Kartu Keluarga</label> <input type="text" name="nkk" required="required"/>
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-primary">Lihat</button>
+		</div>
+	</form>
+	<hr></hr>
+	
+	<form action="/penduduk/cari">
+	 	<button type="submit" class="btn btn-primary">Cari Penduduk Berdasarkan Kelurahan</button>
+	</form>
+	
+</body>
+
+</html>
+

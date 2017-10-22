@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>Success</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		<h2>Sukses!</h2>
+		<p th:text=" 'Penduduk dengan NIK '+${nik} +' sudah tidak aktif'"></p>
+		<br/>
+		<form action="/penduduk" method="get">
+       		 <input type="hidden" name="nik" th:value="${nik}" />
+ 		 	<button type="submit" class="btn btn-primary">Kembali ke Data Penduduk</button>
+		</form>
+	</body>
+</html>

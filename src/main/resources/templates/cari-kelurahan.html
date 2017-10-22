@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Cari Data</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+		<h1 th:text="'Lihat Data Kependudukan Berdasarkan Kelurahan di ' + ${kecamatan.nama_kecamatan} + ', ' +${kota.nama_kota}"></h1>
+	<div class="col-sm-6 col-md-6 col-lg-6 pull-right">
+	<form action="/penduduk/cari" method="get">
+		<div class="form-group">
+			<label for="kt">Kota/Kabupaten: </label>
+				<input type="hidden" th:name="kt" th:value="${kota.id}"/>
+				<select th:name="kt" disabled="disabled" class="form-control">
+					<option th:value="${kota.id}" th:text="${kota.nama_kota}"></option>
+				</select>
+				
+			<label for="kc">Kecamatan: </label>
+				<input type="hidden" th:name="kc" th:value="${kecamatan.id}"/>
+				<select th:name="kc" disabled="disabled" class="form-control">
+					<option th:value="${kecamatan.id}" th:text="${kecamatan.nama_kecamatan}"></option>
+				</select>
+				
+			<label for="kl">Kelurahan: </label>
+				<select th:name="kl" class="form-control">
+					<option th:each="kelurahan, iterationStatus: ${listKelurahan}" th:value="${kelurahan.id}" th:text="${kelurahan.nama_kelurahan}"></option>
+				</select>
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-primary">Lihat</button>
+		</div>
+	</form>
+	</div>
+	
+	
+</body>
+
+</html>
+
